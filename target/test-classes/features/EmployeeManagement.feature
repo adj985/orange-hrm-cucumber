@@ -6,5 +6,5 @@ Feature: Employee Management
     When I login with username and password
     And I navigate to Add Employee section
     And I navigate to Employee List section
-    And I search for employee named "Linda"
+    And I search for employee named "Lindsay"
     Then I should see employee details displayed

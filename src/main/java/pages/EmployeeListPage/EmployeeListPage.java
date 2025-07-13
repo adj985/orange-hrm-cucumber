@@ -2,6 +2,7 @@ package pages.EmployeeListPage;
 
 import base.Locator;
 import base.Locators;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -26,7 +27,8 @@ public class EmployeeListPage {
         driver.findElement(searchButton).click();
     }
 
-    public boolean isEmployeeFound() {
-        return !driver.findElements(resultRow).isEmpty();
+    public void verifyResultsAreVisible() {
+        int size = driver.findElements(resultRow).size();
+        Assert.assertTrue(size > 0);
     }
 }

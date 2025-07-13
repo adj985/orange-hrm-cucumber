@@ -47,6 +47,6 @@ public class StepDefinitions {
 
     @Then("I should see employee details displayed")
     public void i_should_see_employee_details_displayed() {
-        assert employeeListPage.isEmployeeFound() : "Employee not found!";
+        employeeListPage.verifyResultsAreVisible();
     }
 }
