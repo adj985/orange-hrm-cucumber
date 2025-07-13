@@ -1,6 +1,7 @@
 package pages.LoginPage;
 
 import base.Locator;
+import base.Locators;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -10,11 +11,11 @@ import static pages.LoginPage.LoginPageLabels.*;
 
 public class LoginPage {
 
-    private WebDriver driver;
+    private final WebDriver driver;
 
-    private final By usernameLocator = By.xpath(Locator.parseLocator(Locator.INPUT, USERNAME));
-    private final By passwordLocator = By.xpath(Locator.parseLocator(Locator.INPUT, PASSWORD));
-    private final By loginButtonLocator = By.xpath(Locator.parseLocator(Locator.BUTTON, LOGIN));
+    private final By usernameLocator = By.xpath(Locator.parseLocator(Locators.INPUT, USERNAME));
+    private final By passwordLocator = By.xpath(Locator.parseLocator(Locators.INPUT, PASSWORD));
+    private final By loginButtonLocator = By.xpath(Locator.parseLocator(Locators.BUTTON, LOGIN));
 
 
     public LoginPage(WebDriver driver) {
@@ -24,14 +25,14 @@ public class LoginPage {
     }
 
     public void enterUsername(String username) {
-        if (!driver.findElement(usernameLocator).getText().equals(""))
+        if (!driver.findElement(usernameLocator).getText().isEmpty())
             driver.findElement(usernameLocator).clear();
         driver.findElement(usernameLocator).sendKeys(username);
 
     }
 
     public void enterPassword(String password) {
-        if (!driver.findElement(passwordLocator).getText().equals(""))
+        if (!driver.findElement(passwordLocator).getText().isEmpty())
             driver.findElement(passwordLocator).clear();
         driver.findElement(passwordLocator).sendKeys(password);
     }

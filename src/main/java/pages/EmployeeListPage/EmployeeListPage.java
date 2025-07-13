@@ -1,16 +1,21 @@
 package pages.EmployeeListPage;
 
+import base.Locator;
+import base.Locators;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import static pages.EmployeeListPage.EmployeeListLabels.EMPLOYEE_NAME;
+import static pages.EmployeeListPage.EmployeeListLabels.SEARCH;
+
 public class EmployeeListPage {
 
-    private WebDriver driver;
+    private final WebDriver driver;
 
     // Locators
-    private By searchNameField = By.xpath("//label[text()='Employee Name']/../following-sibling::div//input");
-    private By searchButton = By.xpath("//button[@type='submit']");
-    private By resultRow = By.xpath("//div[@class='oxd-table-body']//div[contains(@class,'oxd-table-card')]");
+    private final By searchNameField = By.xpath(Locator.parseLocator(Locators.INPUT_BY_LABEL, EMPLOYEE_NAME));
+    private final By searchButton = By.xpath(Locator.parseLocator(Locators.BUTTON, SEARCH));
+    private final By resultRow = By.xpath(Locators.RESULT_ROW);
 
     public EmployeeListPage(WebDriver driver) {
         this.driver = driver;
@@ -22,6 +27,6 @@ public class EmployeeListPage {
     }
 
     public boolean isEmployeeFound() {
-        return driver.findElements(resultRow).size() > 0;
+        return !driver.findElements(resultRow).isEmpty();
     }
 }
